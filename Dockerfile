@@ -1,8 +1,12 @@
-FROM alpine:3.14
+FROM node
+# alpine:3.14
 # Create app directory
+# ENV PATH /usr/src/app/node_modules/.bin:$PATH
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install
+#COPY node_modules/ ./
+# RUN npm install
+RUN npm ci --only=production
 # If you are building your code for production
 #RUN npm ci --only=production
 COPY . .
